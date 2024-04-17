@@ -1,0 +1,77 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.14.0
+  name: conjurs.api.0jk6.github.io
+spec:
+  group: api.0jk6.github.io
+  names:
+    kind: Conjur
+    listKind: ConjurList
+    plural: conjurs
+    singular: conjur
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Conjur is the Schema for the conjurs API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ConjurSpec defines the desired state of Conjur
+            properties:
+              apiKeyFromSecret:
+                type: string
+              conjurAcct:
+                type: string
+              conjurHost:
+                type: string
+              data:
+                additionalProperties:
+                  description: custom secret data
+                  properties:
+                    secretIdentifier:
+                      type: string
+                  required:
+                  - secretIdentifier
+                  type: object
+                type: object
+              hostname:
+                type: string
+              refreshInterval:
+                type: integer
+            required:
+            - apiKeyFromSecret
+            - conjurAcct
+            - conjurHost
+            - data
+            - hostname
+            - refreshInterval
+            type: object
+          status:
+            description: ConjurStatus defines the observed state of Conjur
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
