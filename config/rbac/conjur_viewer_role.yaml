@@ -1,0 +1,27 @@
+# permissions for end users to view conjurs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: conjur-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: conjur-operator
+    app.kubernetes.io/part-of: conjur-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: conjur-viewer-role
+rules:
+- apiGroups:
+  - api.0jk6.github.io
+  resources:
+  - conjurs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - api.0jk6.github.io
+  resources:
+  - conjurs/status
+  verbs:
+  - get

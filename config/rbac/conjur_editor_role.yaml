@@ -1,0 +1,31 @@
+# permissions for end users to edit conjurs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: conjur-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: conjur-operator
+    app.kubernetes.io/part-of: conjur-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: conjur-editor-role
+rules:
+- apiGroups:
+  - api.0jk6.github.io
+  resources:
+  - conjurs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - api.0jk6.github.io
+  resources:
+  - conjurs/status
+  verbs:
+  - get

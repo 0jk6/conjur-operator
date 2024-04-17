@@ -1,0 +1,19 @@
+apiVersion: api.0jk6.github.io/v1alpha1
+kind: Conjur
+metadata:
+  labels:
+    app.kubernetes.io/name: conjur-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: conjur-sample
+spec:
+  refreshInterval: 60
+
+  apiKeyFromSecret: "conjur-api-key" #another secret which has base64 encoded conjur api key
+
+  conjurHost: "your conjur host url"
+  conjurAcct: "your conjur account" #eg: cyberarkprd
+  hostname: "your host name" #eg: host/apps/some-name
+
+  data:
+    dev-database: #a secret will be created in your namespace with this name storing the value of the secretIdentfier
+      secretIdentifier: "your secret identifier"
