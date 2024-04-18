@@ -2,9 +2,14 @@
 A custom kubernetes operator that pulls secrets from a CyberArk safe and stores them as a native k8s secret object.
 
 ## Description.
-To use this operator, you must follow the getting started steps available down below.
+To install this operator in your cluster, you must follow the getting started steps available down below.
+To run this locally, clone this repo and run the following commands.
 
-Assuming that you have followed all the steps mentioned down below, you can apply the following yaml files in your namespace.
+`make manifests` - generates manifest files.
+`make install` - installs the CRD, RBAC, etc in your cluster
+`make run` - runs the controller on your local machine, which will reconcile the Conjur objects.
+
+Assuming that you have followed all the steps mentioned above, you can apply the following yaml files in your namespace.
 
 Apply the following yaml to create a secret that stores the Conjur API key in base64 encoded format
 ```yaml
