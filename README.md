@@ -43,6 +43,8 @@ spec:
   data:
     dev-database: #a secret will be created in your namespace with this name storing the value of the secretIdentfier
       secretIdentifier: "your secret identifier"
+    prd-db: #another secret
+      secretIdentifier: "your secret identifier"
 ```
 
 ## Getting Started
